@@ -53,6 +53,7 @@ Open AppDelegate.m and add :
   play // control playback of video with true/false
   fullscreen // control whether the video should play in fullscreen or inline
   loop // control whether the video should loop when ended
+  onPress={()=>{}} // Android only
   onReady={e => this.setState({ isReady: true })}
   onChangeState={e => this.setState({ status: e.state })}
   onChangeQuality={e => this.setState({ quality: e.quality })}
@@ -93,6 +94,7 @@ The iOS implementation of this player uses the official YouTube iFrame under the
 
 #### Events
 
+- `onPress`: Called when touch on the video view (Android only)
 - `onReady`: Called once when the video player is setup.
 - `onChangeState`: Sends the current state of the player on `e.state`. Common values are `buffering`/`playing`/`paused` and more (on Android there is also a `seeking` state that comes with the location of the playback in seconds on `e.currentTime`).
 - `onChangeQuality`: Sends the current quality of video playback on `e.quality`.
