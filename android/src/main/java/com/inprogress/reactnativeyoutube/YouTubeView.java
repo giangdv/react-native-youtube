@@ -4,6 +4,9 @@ import android.app.FragmentManager;
 import android.os.Build;
 import android.os.Parcelable;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
 import com.facebook.react.bridge.Arguments;
@@ -39,6 +42,25 @@ public class YouTubeView extends FrameLayout {
     protected Parcelable onSaveInstanceState() {
         mHasSavedInstance = true;
         return super.onSaveInstanceState();
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
+        final int action = motionEvent.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                WritableMap event = Arguments.createMap();
+                ReactContext reactContext = getReactContext();
+                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPress", event);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                break;
+        }
+        return super.onInterceptTouchEvent(motionEvent);
     }
 
     @Override

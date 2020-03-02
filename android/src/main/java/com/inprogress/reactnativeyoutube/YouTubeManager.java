@@ -75,6 +75,8 @@ public class YouTubeManager extends SimpleViewManager<YouTubeView> {
     @Override
     public @Nullable Map <String,Object> getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
+            "onPress",
+            (Object) MapBuilder.of("registrationName", "onYouTubePress"),
             "error",
             (Object) MapBuilder.of("registrationName", "onYouTubeError"),
             "ready",

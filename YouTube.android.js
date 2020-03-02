@@ -13,6 +13,7 @@ import ReactNative, {
 
 const RCTYouTube = requireNativeComponent('ReactYouTube', YouTube, {
   nativeOnly: {
+    onYouTubePress: true,
     onYouTubeError: true,
     onYouTubeErrorReady: true,
     onYouTubeErrorChangeState: true,
@@ -33,6 +34,7 @@ export default class YouTube extends React.Component {
     controls: PropTypes.oneOf([0, 1, 2]),
     showFullscreenButton: PropTypes.bool,
     resumePlayAndroid: PropTypes.bool,
+    onPress: PropTypes.func,
     onError: PropTypes.func,
     onReady: PropTypes.func,
     onChangeState: PropTypes.func,
@@ -112,6 +114,12 @@ export default class YouTube extends React.Component {
     // When the Native player changes it's layout, we should also force a resizing hack to make
     // sure the controls are in their correct place
     this._fireResizingHack();
+  };
+
+  _onPress = event => {
+    if (this.props.onPress) {
+      this.props.onPress(event.nativeEvent);
+    }
   };
 
   _onError = event => {
@@ -209,6 +217,7 @@ export default class YouTube extends React.Component {
             styles.module,
             { marginRight: this.state.resizingHackFlag ? StyleSheet.hairlineWidth : 0 },
           ]}
+          onYouTubePress={this._onPress}
           onYouTubeError={this._onError}
           onYouTubeReady={this._onReady}
           onYouTubeChangeState={this._onChangeState}
