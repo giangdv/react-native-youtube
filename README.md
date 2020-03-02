@@ -1,6 +1,6 @@
 # Problem
 I has problem when i want to handle touch on youtube. On iOS, i do it easy with handle touch of an view bound of youtube view. But on Android this can not.
-I add create new prop has name ```onPress`` for this. It only work on Android, on iOS you can do it as above i mentioned.
+I add create new prop has name ```onPress``` for this. It only work on Android, on iOS you can do it as above i mentioned.
 
 # react-native-youtube [![react-native-youtube](http://img.shields.io/npm/dm/react-native-youtube.svg)](https://www.npmjs.org/package/react-native-youtube) [![npm version](https://badge.fury.io/js/react-native-youtube.svg)](http://badge.fury.io/js/react-native-youtube) [![Dependency Status](https://david-dm.org/inProgress-team/react-native-youtube.svg)](https://david-dm.org/inProgress-team/react-native-youtube)
 
